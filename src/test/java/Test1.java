@@ -7,7 +7,8 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class Test1 {
-    Logger logger= LoggerFactory.getLogger(Test1.class);
+    Logger logger = LoggerFactory.getLogger(Test1.class);
+
     @Test
     public void rwBite3() throws IOException {
         DataOutputStream dataOutputStream =
@@ -29,14 +30,15 @@ public class Test1 {
         dataOutputStream3.write("1234");
         dataOutputStream1.close();
     }
+
     @Test
     public void rwBite2() throws IOException {
-        try(FileInputStream fin=new FileInputStream("" +
+        try (FileInputStream fin = new FileInputStream("" +
                 "src/test/resources/num_test1.dat")) {
 
-            DataInputStream dataInputStream=new DataInputStream(fin);
-            while(dataInputStream.available()>0){
-                int k=  dataInputStream.readInt();
+            DataInputStream dataInputStream = new DataInputStream(fin);
+            while (dataInputStream.available() > 0) {
+                int k = dataInputStream.readInt();
                 System.out.println(k);
             }
         } catch (IOException e) {
@@ -54,15 +56,16 @@ public class Test1 {
 
         dataOutputStream.close();
     }
+
     @Test
-    public void rwBite1(){
-        try(FileInputStream fin=new FileInputStream("" +
+    public void rwBite1() {
+        try (FileInputStream fin = new FileInputStream("" +
                 "src/test/resources/my_test.txt")) {
-            Reader reader=new InputStreamReader(fin);
-            int k=reader.read();
-            while (k!=-1 ) {
+            Reader reader = new InputStreamReader(fin);
+            int k = reader.read();
+            while (k != -1) {
                 //System.out.println((char) (k) +"["+k+"]");
-                k=reader.read();
+                k = reader.read();
                 //Thread.sleep(1000);
                 //logger.info((char) (b) +"["+b+"]");
             }
@@ -70,33 +73,21 @@ public class Test1 {
             e.printStackTrace();
         }
     }
-    @Test
-    public void rwBite(){
-        try(FileInputStream fin=new FileInputStream("" +
-                "src/test/resources/my_test.txt")) {
-            /*while (fin.available()>0 ) {
-                byte b=(byte)fin.read();
-                System.out.println((char) (b) +"["+b+"]");
-                Thread.sleep(1000);
-                //logger.info((char) (b) +"["+b+"]");
-            }*/
-            int k=fin.available();
-            while (k>0 ) {
-                byte b=(byte)fin.read();
-                System.out.print(k);
-                System.out.println((char) (b) +"["+b+"]");
-                k=fin.available();
-                Thread.sleep(1000);
-                //logger.info((char) (b) +"["+b+"]");
-            }
 
-            /*logger.info("---------read num--------");
-            FileInputStream fin1=new FileInputStream("" +
-                    "src/test/resources/num_test.txt");
-            DataInputStream din=new DataInputStream(fin);
-            double x=din.readDouble();
-            logger.info(String.valueOf(x));*/
-        } catch (IOException | InterruptedException e) {
+    @Test
+    public void rwBite() {
+        try (FileInputStream fin = new FileInputStream("" +
+                "src/test/resources/my_test.txt")) {
+            byte[] b = new byte[1];
+            while (fin.available() > 0) {
+                fin.read(b);
+                String str = new String(b);
+                System.out.println(str);
+            }
+            System.out.println(1233);
+            System.out.println(1233);
+            System.out.println(1233);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
