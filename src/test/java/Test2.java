@@ -7,6 +7,18 @@ import java.io.*;
 public class Test2 {
     Logger logger= LoggerFactory.getLogger(Test2.class);
 
+    @Test
+    public void testDebug(){
+        System.out.println("1233");
+        System.out.println("1233");
+        System.out.println("1233");
+        System.out.println("1233");
+        System.out.println("1233");
+        System.out.println("1233");
+        System.out.println("1233");
+        System.out.println("1233");
+    }
+
     /**
      * 从文件一个字节一个子节地读
      */
@@ -69,12 +81,13 @@ public class Test2 {
             writer.print("000000000000");
             logger.info("test");
             System.out.println("234234");
-          writer.flush();
+          //writer.flush();
             writer.close();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
+
     class MyPrintWriter extends PrintWriter{
 
 
