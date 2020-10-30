@@ -3,12 +3,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 文本输入与输出
  */
 public class Test3 {
     Logger logger = LoggerFactory.getLogger(Test3.class);
+    /**
+     * 输出到文本文件
+     */
+    @Test
+    public void print2Txt(){
+        try {
+            PrintWriter out=new PrintWriter(
+                    new FileOutputStream("src/test/resources/test3/print1.txt")
+            ,true);
+            out.print("Hello world");
+            out.println(5555d);
+            out.print(' ');
+            out.println(123d);
+           // out.flush();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 1234被存储为字符
@@ -18,7 +37,7 @@ public class Test3 {
         try {
             Writer out = new OutputStreamWriter(new FileOutputStream(
                     "src/test/resources/test3/out1.txt"
-            ));
+            ), StandardCharsets.UTF_8);
             out.write("1234");
             out.close();
             Reader reader = new InputStreamReader(new FileInputStream(
